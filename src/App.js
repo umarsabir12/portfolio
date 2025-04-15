@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import './App.css';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 function App() {
+  useEffect(() => {
+    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual public key
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    
+    emailjs.sendForm(
+      'service_9ob2k5u', // Replace with your EmailJS service ID
+      'template_5qz3sz3', // Replace with your EmailJS template ID
+      form,
+      "WU2Vm9l5Au4SBF8yp"
+    )
+    .then((result) => {
+      alert('Message sent successfully!');
+      form.reset();
+    }, (error) => {
+      alert('Failed to send message. Please try again.');
+      console.log(error);
+    });
+  };
+
   return (
     <div className="App">
       <nav className="navbar">
@@ -65,11 +88,11 @@ function App() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
             >
-              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="social-link">
+              {/* <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="social-link">
                 <FaGithub />
                 <span>GitHub</span>
-              </a>
-              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="social-link">
+              </a> */}
+              <a href="https://www.linkedin.com/in/umar-sabir-99b5b5134/" target="_blank" rel="noopener noreferrer" className="social-link">
                 <FaLinkedin />
                 <span>LinkedIn</span>
               </a>
@@ -171,9 +194,9 @@ function App() {
                 <li>FHIR API integration for healthcare data interoperability</li>
               </ul>
               <div className="project-links">
-                <a href="https://trueaccess.com" target="_blank" rel="noopener noreferrer" className="project-link">
+                {/* <a href="https://trueaccess.com" target="_blank" rel="noopener noreferrer" className="project-link">
                   <FaGithub /> View Project
-                </a>
+                </a> */}
                 <a href="https://trueaccess.com" target="_blank" rel="noopener noreferrer" className="project-link">
                   Live Demo
                 </a>
@@ -201,9 +224,9 @@ function App() {
                 <li>HIPAA-compliant document storage with AWS S3 encryption</li>
               </ul>
               <div className="project-links">
-                <a href="https://github.com/yourusername/curbside" target="_blank" rel="noopener noreferrer" className="project-link">
+                {/* <a href="https://github.com/yourusername/curbside" target="_blank" rel="noopener noreferrer" className="project-link">
                   <FaGithub /> View Project
-                </a>
+                </a> */}
                 <a href="https://www.curbsidehealth.online/" target="_blank" rel="noopener noreferrer" className="project-link">
                   Live Demo
                 </a>
@@ -231,12 +254,12 @@ function App() {
                 <li>Admin dashboard with real-time sales analytics</li>
               </ul>
               <div className="project-links">
-                <a href="https://github.com/yourusername/cashforcars" target="_blank" rel="noopener noreferrer" className="project-link">
+                {/* <a href="https://github.com/yourusername/cashforcars" target="_blank" rel="noopener noreferrer" className="project-link">
                   <FaGithub /> View Project
-                </a>
-                <a href="https://cashforcars.example.com" target="_blank" rel="noopener noreferrer" className="project-link">
+                </a> */}
+                {/* <a href="https://cashforcars.example.com" target="_blank" rel="noopener noreferrer" className="project-link">
                   Live Demo
-                </a>
+                </a> */}
               </div>
             </motion.div>
           </div>
@@ -368,20 +391,20 @@ function App() {
                   <FaLinkedin className="contact-icon" />
                   <div className="contact-text">
                     <h4>LinkedIn</h4>
-                    <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/umar-sabir-99b5b5134/" target="_blank" rel="noopener noreferrer">
                       linkedin.com/in/yourusername
                     </a>
                   </div>
                 </div>
-                <div className="contact-item">
-                  <FaGithub className="contact-icon" />
-                  <div className="contact-text">
+                {/* <div className="contact-item"> */}
+                  {/* <FaGithub className="contact-icon" /> */}
+                  {/* <div className="contact-text">
                     <h4>GitHub</h4>
                     <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
                       github.com/yourusername
                     </a>
-                  </div>
-                </div>
+                  </div> */}
+                {/* </div> */}
               </div>
             </motion.div>
 
@@ -391,24 +414,7 @@ function App() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
               viewport={{ once: true }}
-              onSubmit={(e) => {
-                e.preventDefault();
-                const formData = new FormData(e.target);
-                const data = {
-                  name: formData.get('name'),
-                  email: formData.get('email'),
-                  message: formData.get('message')
-                };
-                
-                // Send email using EmailJS
-                emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', data, 'YOUR_PUBLIC_KEY')
-                  .then((result) => {
-                    alert('Message sent successfully!');
-                    e.target.reset();
-                  }, (error) => {
-                    alert('Failed to send message. Please try again.');
-                  });
-              }}
+              onSubmit={handleSubmit}
             >
               <motion.div
                 className="input-group"
@@ -475,7 +481,7 @@ function App() {
       </section>
 
       <footer className="footer">
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <p>&copy; 2024 Umar Sabir. All rights reserved.</p>
       </footer>
     </div>
   );
