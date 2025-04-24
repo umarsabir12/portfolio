@@ -858,3 +858,201 @@ h2 {
 ::-webkit-scrollbar-thumb:hover {
   background: #8ab2ff;
 }
+
+/* Enhanced Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.4);
+  }
+}
+
+/* Enhanced Project Card Animations */
+.project-card {
+  animation: float 6s ease-in-out infinite;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  animation: none;
+}
+
+.project-tech span {
+  transition: all 0.3s ease;
+}
+
+.project-tech span:hover {
+  transform: translateY(-3px);
+  background: var(--accent-color);
+  color: var(--primary-color);
+}
+
+/* Enhanced Skills Section */
+.skill-category {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.skill-category:hover {
+  transform: translateY(-10px) scale(1.02);
+  animation: glow 2s infinite;
+}
+
+.skill-icon {
+  animation: pulse 3s infinite;
+}
+
+.skill-category li {
+  transition: all 0.3s ease;
+  transform: translateX(0);
+}
+
+.skill-category li:hover {
+  transform: translateX(10px);
+  color: var(--accent-color);
+}
+
+/* Enhanced Contact Form */
+.input-group {
+  transition: all 0.3s ease;
+}
+
+.input-group:focus-within {
+  transform: translateY(-5px);
+}
+
+.form-input {
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+/* Enhanced Social Links */
+.social-link {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.social-link:hover {
+  transform: translateY(-5px) scale(1.1);
+  animation: glow 2s infinite;
+}
+
+/* Enhanced Experience Badge */
+.experience-badge {
+  animation: float 4s ease-in-out infinite;
+}
+
+.experience-badge:hover {
+  animation: none;
+  transform: rotate(0deg) scale(1.1);
+}
+
+/* Enhanced Section Titles */
+h2 {
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-1);
+  transition: width 0.3s ease;
+}
+
+h2:hover::after {
+  width: 100%;
+}
+
+/* Enhanced Contact Items */
+.contact-item {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.contact-item:hover {
+  transform: translateX(15px);
+}
+
+.contact-icon {
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* Enhanced Navigation */
+.nav-links a {
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  transform: translateY(-3px);
+  color: var(--accent-color);
+}
+
+/* Enhanced Hero Section */
+.hero-greeting {
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-description {
+  transition: all 0.3s ease;
+}
+
+.hero-description:hover {
+  transform: translateX(10px);
+  color: var(--accent-color);
+}
+
+/* Enhanced Image Frame */
+.image-frame {
+  animation: float 6s ease-in-out infinite;
+}
+
+.image-frame:hover {
+  animation: none;
+  transform: perspective(1000px) rotateY(0deg) translateY(-15px);
+}
+
+/* Add smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add animation to section content */
+.section-content {
+  transition: all 0.4s ease;
+}
+
+.section-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
